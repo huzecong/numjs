@@ -51,7 +51,6 @@ module.exports = function (grunt) {
             'dist/numjs.min.js',
             // tests files
             'test/karma/*.spec.js',
-            {pattern: 'data/**/*.png', watched: false, included: false, served: true}
           ]
         }
       },
@@ -61,7 +60,6 @@ module.exports = function (grunt) {
             'test/karma/phantom.js',
             'dist/numjs.js',
             'test/karma/*.spec.js',
-            {pattern: 'data/**/*.png', watched: false, included: false, served: true}
           ]
         }
       }

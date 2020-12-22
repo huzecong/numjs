@@ -27863,7 +27863,7 @@ function flip(m, axis) {
  * @return {NdArray} A rotated view of m.
  */
 function rot90 (m, k, axes) {
-  k = k || 1;
+  k = k === undefined ? 1 : k;
   while (k < 0) {
     k += 4;
   }
