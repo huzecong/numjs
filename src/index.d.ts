@@ -242,8 +242,9 @@ export interface NdArray<T = number> extends BaseNdArray<T> {
     fftconvolve(filter: NjArray<T>): NdArray<T>;
 }
 
+type RecursiveArray<T> = T[] | RecursiveArray<T>[];
 export type NdArrayData<T> = BaseNdArray.Data<T>;
-export type NjArray<T> = NdArrayData<T> | NdArray<T>;
+export type NjArray<T> = NdArrayData<T> | NdArray<T> | RecursiveArray<T>;
 export type NjParam<T> = NjArray<T> | number;
 
 /**
@@ -425,8 +426,8 @@ export function negative<T = number>(x: NjParam<T>): NdArray<T>;
 /**
  * Return a new array of given shape and type, filled with ones.
  *
- * @param shape Shape of the new array, e.g., [2, 3] or 2.
- * @param [dtype] The type of the output array.
+ * @param shape  Shape of the new array, e.g., [2, 3] or 2.
+ * @param [dtype]  The type of the output array.
  * @returns Array of ones with the given shape and dtype
  */
 export function ones<T = number>(shape: NdArrayData<T> | number, dtype?: BaseNdArray.DataType): NdArray<T>;
@@ -440,7 +441,7 @@ export function power<T = number>(x1: NjParam<T>, x2: NjParam<T>): NdArray<T>;
 /**
  * Create an array of the given shape and propagate it with random samples from a uniform distribution over [0, 1].
  *
- * @param [shape]    he dimensions of the returned array, should all be positive integers
+ * @param [shape]  The dimensions of the returned array, should all be positive integers
  */
 export function random<T = number>(shape?: NdArrayData<T> | number): NdArray<T>;
 
