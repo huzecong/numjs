@@ -16,6 +16,9 @@ type Slice = null | {
     2?: number | null;
 };
 
+// Credit: https://github.com/microsoft/TypeScript/issues/1360#issuecomment-670180326
+type Append<T extends unknown[], I> = [...T, I]
+
 export interface NdArray<T = number> extends BaseNdArray<T> {
     readonly size: number;
     readonly shape: number[];
