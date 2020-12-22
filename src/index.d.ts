@@ -19,7 +19,7 @@ type Slice = null | {
 // Credit: https://github.com/microsoft/TypeScript/issues/1360#issuecomment-670180326
 type Append<T extends unknown[], I> = [...T, I]
 
-export interface NdArray<T = number> extends BaseNdArray<T> {
+export interface NdArray<T = number> {
     readonly size: number;
     readonly shape: number[];
     readonly ndim: number;
@@ -28,7 +28,12 @@ export interface NdArray<T = number> extends BaseNdArray<T> {
 
     get(...args: number[]): T;
 
-    set(...args: number[]): T;
+    set(...args: Append<number[], T>): T;
+
+    /**
+     * Retrieve the index of the cell in the underlying ndarray.
+     */
+    index(...args: number[]): number;
 
     slice(...args: Array<number | Slice>): NdArray<T>;
 
@@ -105,6 +110,8 @@ export interface NdArray<T = number> extends BaseNdArray<T> {
     transpose(axes?: number[]): NdArray<T>;
 
     transpose(...axis: number[]): NdArray<T>;
+
+    reshape(...shapes: number[]): NdArray<T>;
 
     /**
      * Dot product of two arrays.
