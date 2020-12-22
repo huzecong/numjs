@@ -334,7 +334,7 @@ export function dot<T = number>(a: NjArray<T>, b: NjArray<T>): NdArray<T>;
  * @param [dtype]    The type of the output array.
  * @returns Array of `undefined` values with the given shape and dtype
  */
-export function empty<T = number>(shape: NdArrayData<T> | number, dtype?: NdType<T>): NdArray<T>;
+export function empty<T = number>(shape: number | number[], dtype?: NdType<T>): NdArray<T>;
 
 /**
  * Return true if two arrays have the same shape and elements, false otherwise.
@@ -430,7 +430,7 @@ export function negative<T = number>(x: NjParam<T>): NdArray<T>;
  * @param [dtype]  The type of the output array.
  * @returns Array of ones with the given shape and dtype
  */
-export function ones<T = number>(shape: NdArrayData<T> | number, dtype?: BaseNdArray.DataType): NdArray<T>;
+export function ones<T = number>(shape: number | number[], dtype?: BaseNdArray.DataType): NdArray<T>;
 
 /**
  * Raise first array elements to powers from second array, element-wise.
@@ -443,7 +443,7 @@ export function power<T = number>(x1: NjParam<T>, x2: NjParam<T>): NdArray<T>;
  *
  * @param [shape]  The dimensions of the returned array, should all be positive integers
  */
-export function random<T = number>(shape?: NdArrayData<T> | number): NdArray<T>;
+export function random<T = number>(shape?: number | number[]): NdArray<T>;
 
 /**
  * Return element-wise remainder of division.
@@ -558,7 +558,7 @@ export function transpose<T = number>(x: NjParam<T>, axes?: number): NdArray<T>;
  * @param [dtype = Array] The type of the output array.
  * @returns Array of zeros with the given shape and dtype
  */
-export function zeros<T = number>(shape: NdArrayData<T> | number, dtype?: BaseNdArray.DataType): NdArray<T>;
+export function zeros<T = number>(shape: number | number[], dtype?: BaseNdArray.DataType): NdArray<T>;
 
 export namespace errors {
     function ValueError(message?: string): Error;
